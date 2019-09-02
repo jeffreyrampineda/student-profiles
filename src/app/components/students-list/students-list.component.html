@@ -1,0 +1,11 @@
+<div class="container">
+  <mat-form-field class="searchInput">
+    <input matInput [(ngModel)]="searchName" (keyup)="applyFilters()" placeholder="Search by name">
+  </mat-form-field>
+  <mat-form-field class="searchInput">
+    <input matInput [(ngModel)]="searchTag" (keyup)="applyFilters()" placeholder="Search by tag">
+  </mat-form-field>
+  <div class="students-list-container">
+    <app-student class="student-container" *ngFor="let student of filteredStudents" [student]="student"></app-student>
+  </div>
+</div>

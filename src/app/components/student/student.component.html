@@ -1,0 +1,26 @@
+
+<img src="{{ student.pic }}" alt="avatar" class="avatar student-avatar">
+<div class="student-content">
+  <span class="student-title">{{ student.firstName | uppercase }} {{ student.lastName | uppercase }}</span>
+  <div class="student-body">
+    <span>Email: {{ student.email }}</span><br>
+    <span>Company: {{ student.company }}</span><br>
+    <span>Skill: {{ student.skill }}</span><br>
+    <span>Average: {{ getAvg() }} %</span><br>
+    <br>
+    <div *ngIf="expandMoreIcon === 'remove'">
+      <div *ngFor="let grade of student.grades; let i = index">Test {{ i + 1 }}: {{ grade }} %</div>
+      <br>
+      <mat-chip-list>
+        <mat-chip *ngFor="let tag of student.tags">{{ tag }}</mat-chip>
+      </mat-chip-list>
+      <br>
+      <mat-form-field>
+        <input matInput (keyup.enter)="addTag($event.target.value); $event.target.value=''" placeholder="Add a tag">
+      </mat-form-field>
+    </div>
+  </div>
+</div>
+<div class="student-options">
+  <button mat-button (click)="expandMore()"><mat-icon class="student-options-icon">{{ expandMoreIcon }}</mat-icon></button>
+</div>
